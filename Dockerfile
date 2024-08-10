@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Install required packages
-RUN pip install --no-cache-dir telebot python-binance
+RUN pip install --no-cache-dir telebot python-binance Flask
 
 # Expose the port your app runs on
 EXPOSE 8000
