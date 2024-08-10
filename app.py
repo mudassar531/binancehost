@@ -1,6 +1,14 @@
+from flask import Flask
 import telebot
 from binance.client import Client
 from datetime import datetime, timedelta
+
+# Flask setup
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return "Hello, Binance PnL Bot is Running!"
 
 # Replace with your actual API keys
 binance_api_key = 'Ueq3zkG9hDGKYOFDKNHqQWG5iJ11W4PXwOnXf8GpCFvqPBP9q4s15xNX3kFhKAxE'
@@ -128,3 +136,7 @@ def callback_pnl(call):
 
 # Start polling
 bot.infinity_polling()
+
+# Start the Flask app
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)
