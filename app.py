@@ -15,7 +15,13 @@ binance_api_key = 'Ueq3zkG9hDGKYOFDKNHqQWG5iJ11W4PXwOnXf8GpCFvqPBP9q4s15xNX3kFhK
 binance_api_secret = 'SPW55GDMy32JuqE481qpdcODNPRT6Za6qNW4OEol4dKVhGIDJsMzgv0eryBdg3FF'
 telegram_bot_token = '7249610741:AAFYx7CG8uUq5C0vaLta1OWHqdVyQVwPhqA'
 
-client = Client(binance_api_key, binance_api_secret)
+# Proxy configuration
+proxies = {
+    "http": "http://your.proxy.server:port",
+    "https": "https://your.proxy.server:port"
+}
+
+client = Client(binance_api_key, binance_api_secret, requests_params={"proxies": proxies})
 bot = telebot.TeleBot(telegram_bot_token)
 
 def fetch_trades(symbol, start_time, end_time):
